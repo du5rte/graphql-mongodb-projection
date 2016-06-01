@@ -14,6 +14,10 @@ references:
 
 ## Usage
 
+```sh
+npm i -D graphql-mongodb-projection 
+```
+
 Just add it has a second parameter in a `.findOne` inside the `resolve` function, make sure to pass it `info`. (example using `koa` with `express` is the 3rd parameter).
 
 ```js
