@@ -1,6 +1,6 @@
 {
   "name": "graphql-mongodb-projection",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Uses GraphQL resolve info to generate mongoDB projections",
   "main": "./dist/index.js",
   "scripts": {
