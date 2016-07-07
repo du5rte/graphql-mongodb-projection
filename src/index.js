@@ -3,10 +3,20 @@ export default function infoToProjection(info, context = info.fieldASTs[0]) {
     switch (selection.kind) {
       case 'Field':
 
-        if(selection.name.value === 'edges') {
+        let nodeSelection = undefined;
+        if (selection &&
+            selection.selectionSet &&
+            selection.selectionSet.selections) {
+              nodeSelection = selection.selectionSet.selections.find(
+                sel => sel.name.value === 'node'
+          );
+        }
+
+        if(selection.name.value === 'edges' &&
+          typeof nodeSelection !== 'undefined') {
           return {
             ...projection,
-            ...infoToProjection(info, selection.selectionSet.selections[0])
+            ...infoToProjection(info, nodeSelection)
           }
         } else {
           return {
