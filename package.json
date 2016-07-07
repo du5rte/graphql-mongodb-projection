@@ -1,21 +1,23 @@
 {
   "name": "graphql-mongodb-projection",
-  "version": "1.0.2",
   "description": "Uses GraphQL resolve info to generate mongoDB projections",
+  "homepage": "https://github.com/monteirocode/graphql-mongodb-projection#readme",
+  "version": "1.0.3",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp",
+    "build": "gulp compile",
+    "test": "gulp test"
   },
+  "author": "Eddie Monteiro <monteirocode@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/monteirocode/graphql-mongodb-projection.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/monteirocode/graphql-mongodb-projection/issues"
   },
-  "homepage": "https://github.com/monteirocode/graphql-mongodb-projection#readme",
   "devDependencies": {
     "babel-core": "^6.7.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",

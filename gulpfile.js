@@ -1,25 +1,31 @@
-var gulp = require('gulp');
-var $    = require('gulp-load-plugins')();
+var gulp = require('gulp')
+var $    = require('gulp-load-plugins')()
 
-// Error Handler
 function errorHandler(error) {
-  console.log(error.toString());
-  this.emit('end');
+  console.log(error.toString())
+  this.emit('end')
 }
 
 // TODO: write tests
-gulp.task('test', function () {
-  return gulp.src(`tests/*.js`, {read: false})
-    .pipe($.mocha({
-      compilers: {
-        js: require('babel-core/register')
-      }
-    }).on('error', errorHandler))
-})
+// gulp.task('test', function () {
+//   return gulp.src(`tests/*.js`, {read: false})
+//     .pipe($.mocha({
+//       compilers: {
+//         js: require('babel-core/register')
+//       }
+//     }).on('error', errorHandler))
+// })
 
-// Webpack Bundler
 gulp.task('compile', function() {
   return gulp.src('src/*.js')
-		.pipe($.babel())
-		.pipe(gulp.dest('dist'));
+		.pipe($.babel()).on('error', errorHandler)
+		.pipe(gulp.dest('dist'))
 })
+
+gulp.task('watch', function () {
+  gulp.watch('src/*.js', gulp.series('compile'))
+})
+
+gulp.task('default',
+  gulp.series(/*'test',*/ 'compile', 'watch')
+)
