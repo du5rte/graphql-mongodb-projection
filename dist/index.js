@@ -14,8 +14,14 @@ function infoToProjection(info) {
     switch (selection.kind) {
       case 'Field':
 
-        if (selection.name.value === 'edges') {
-          return _extends({}, projection, infoToProjection(info, selection.selectionSet.selections[0]));
+        let nodeSelection = undefined;
+
+        if (selection && selection.selectionSet && selection.selectionSet.selections) {
+          nodeSelection = selection.selectionSet.selections.find(sel => sel.name.value === 'node');
+        }
+
+        if (selection.name.value === 'edges' && typeof nodeSelection !== 'undefined') {
+          return _extends({}, projection, infoToProjection(info, nodeSelection));
         } else {
           return _extends({}, projection, {
             [selection.name.value]: true
