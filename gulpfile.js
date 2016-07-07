@@ -24,8 +24,3 @@ gulp.task('compile', function() {
 		.pipe($.babel())
 		.pipe(gulp.dest('lib'));
 })
-
-// Default Tasks
-gulp.task('default',
-  gulp.series('test', 'compile')
-);
