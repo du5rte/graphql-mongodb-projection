@@ -23,8 +23,3 @@ gulp.task('compile', function() {
 		.pipe($.babel())
 		.pipe(gulp.dest('dist'));
 })
-
-// Default Tasks
-gulp.task('default',
-  gulp.series('test', 'compile')
-);
