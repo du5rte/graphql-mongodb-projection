@@ -7,8 +7,8 @@ export default function infoToProjection(info, context = info.fieldASTs[0]) {
         if (selection &&
             selection.selectionSet &&
             selection.selectionSet.selections) {
-          selection.selectionSet.selections.find(
-            sel => sel.name.value === 'node'
+              nodeSelection = selection.selectionSet.selections.find(
+                sel => sel.name.value === 'node'
           );
         }
 
