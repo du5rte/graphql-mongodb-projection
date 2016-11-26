@@ -9,7 +9,7 @@
     "build": "gulp compile",
     "test": "gulp test"
   },
-  "author": "Eddie Monteiro <du5rtemonteiro@gmail.com>",
+  "author": "Duarte Monteiro <du5rtemonteiro@gmail.com> (http://du5rte.com/)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/du5rte/graphql-mongodb-projection.git"
