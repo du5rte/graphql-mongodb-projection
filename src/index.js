@@ -1,4 +1,4 @@
-export default function infoToProjection(info, context = info.fieldASTs[0]) {
+export default function infoToProjection(info, context = (info.fieldASTs || info.fieldNodes)[0]) {
   return context.selectionSet.selections.reduce((projection, selection) => {
     switch (selection.kind) {
       case 'Field':

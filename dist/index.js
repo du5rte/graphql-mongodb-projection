@@ -8,7 +8,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.default = infoToProjection;
 function infoToProjection(info) {
-  let context = arguments.length <= 1 || arguments[1] === undefined ? info.fieldASTs[0] : arguments[1];
+  let context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (info.fieldASTs || info.fieldNodes)[0];
 
   return context.selectionSet.selections.reduce((projection, selection) => {
     switch (selection.kind) {
