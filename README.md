@@ -1,5 +1,10 @@
 # graphql-mongodb-projection
 
+[![Build Status](https://travis-ci.org/du5rte/graphql-mongodb-projection.svg?branch=master)](https://travis-ci.org/du5rte/graphql-mongodb-projection)
+[![David](https://img.shields.io/david/peer/du5rte/graphql-mongodb-projection.svg)](https://github.com/du5rte/graphql-mongodb-projection)
+[![npm version](https://img.shields.io/npm/v/graphql-mongodb-projection.svg)](https://www.npmjs.com/package/graphql-mongodb-projection)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](CONTRIBUTING.md#pull-requests)
+
 Uses GraphQL resolve's info to generate mongoDB projections
 
 Supports:
@@ -15,7 +20,7 @@ references:
 ## Usage
 
 ```sh
-$ npm install --save-dev graphql-mongodb-projection 
+$ npm install --save-dev graphql-mongodb-projection
 ```
 
 Just add it has a second parameter in a `.findOne` inside the `resolve` function, make sure to pass it `info`. (example using `koa` with `express` is the 3rd parameter).

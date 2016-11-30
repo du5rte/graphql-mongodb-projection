@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "583f1607bf98f7f846e7d2d1",
+    "email":"leonardodicaprio@mail.com",
+    "firstname":"Leonardo",
+    "lastname":"Di Caprio"
+  },
+  {
+    "_id": "583f1607bf98f7f846e7d2d2",
+    "email":"bradpitt@mail.com",
+    "firstname":"Brad",
+    "lastname":"Pitt"
+  },
+  {
+    "_id": "583f1607bf98f7f846e7d2d3",
+    "email":"christianbale@mail.com",
+    "firstname":"Christian",
+    "lastname":"Bale"
+  }
+]

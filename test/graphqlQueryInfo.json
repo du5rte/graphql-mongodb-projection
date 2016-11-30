@@ -1,0 +1,355 @@
+{
+  "fieldName": "user",
+  "fieldNodes": [
+    {
+      "kind": "Field",
+      "alias": null,
+      "name": {
+        "kind": "Name",
+        "value": "user",
+        "loc": {
+          "start": 4,
+          "end": 8
+        }
+      },
+      "arguments": [
+        {
+          "kind": "Argument",
+          "name": {
+            "kind": "Name",
+            "value": "_id",
+            "loc": {
+              "start": 9,
+              "end": 12
+            }
+          },
+          "value": {
+            "kind": "StringValue",
+            "value": "583f1607bf98f7f846e7d2d1",
+            "loc": {
+              "start": 14,
+              "end": 40
+            }
+          },
+          "loc": {
+            "start": 9,
+            "end": 40
+          }
+        }
+      ],
+      "directives": [],
+      "selectionSet": {
+        "kind": "SelectionSet",
+        "selections": [
+          {
+            "kind": "Field",
+            "alias": null,
+            "name": {
+              "kind": "Name",
+              "value": "_id",
+              "loc": {
+                "start": 48,
+                "end": 51
+              }
+            },
+            "arguments": [],
+            "directives": [],
+            "selectionSet": null,
+            "loc": {
+              "start": 48,
+              "end": 51
+            }
+          },
+          {
+            "kind": "Field",
+            "alias": null,
+            "name": {
+              "kind": "Name",
+              "value": "email",
+              "loc": {
+                "start": 56,
+                "end": 61
+              }
+            },
+            "arguments": [],
+            "directives": [],
+            "selectionSet": null,
+            "loc": {
+              "start": 56,
+              "end": 61
+            }
+          },
+          {
+            "kind": "Field",
+            "alias": null,
+            "name": {
+              "kind": "Name",
+              "value": "firstname",
+              "loc": {
+                "start": 66,
+                "end": 75
+              }
+            },
+            "arguments": [],
+            "directives": [],
+            "selectionSet": null,
+            "loc": {
+              "start": 66,
+              "end": 75
+            }
+          },
+          {
+            "kind": "Field",
+            "alias": null,
+            "name": {
+              "kind": "Name",
+              "value": "lastname",
+              "loc": {
+                "start": 80,
+                "end": 88
+              }
+            },
+            "arguments": [],
+            "directives": [],
+            "selectionSet": null,
+            "loc": {
+              "start": 80,
+              "end": 88
+            }
+          }
+        ],
+        "loc": {
+          "start": 42,
+          "end": 92
+        }
+      },
+      "loc": {
+        "start": 4,
+        "end": 92
+      }
+    }
+  ],
+  "returnType": "User",
+  "parentType": "Queries",
+  "path": {
+    "key": "user"
+  },
+  "schema": {
+    "_queryType": "Queries",
+    "_directives": [
+      {
+        "name": "include",
+        "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
+        "locations": [
+          "FIELD",
+          "FRAGMENT_SPREAD",
+          "INLINE_FRAGMENT"
+        ],
+        "args": [
+          {
+            "name": "if",
+            "description": "Included when true.",
+            "type": "Boolean!"
+          }
+        ]
+      },
+      {
+        "name": "skip",
+        "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+        "locations": [
+          "FIELD",
+          "FRAGMENT_SPREAD",
+          "INLINE_FRAGMENT"
+        ],
+        "args": [
+          {
+            "name": "if",
+            "description": "Skipped when true.",
+            "type": "Boolean!"
+          }
+        ]
+      },
+      {
+        "name": "deprecated",
+        "description": "Marks an element of a GraphQL schema as no longer supported.",
+        "locations": [
+          "FIELD_DEFINITION",
+          "ENUM_VALUE"
+        ],
+        "args": [
+          {
+            "name": "reason",
+            "description": "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted in [Markdown](https://daringfireball.net/projects/markdown/).",
+            "type": "String",
+            "defaultValue": "No longer supported"
+          }
+        ]
+      }
+    ],
+    "_typeMap": {
+      "Queries": "Queries",
+      "String": "String",
+      "User": "User",
+      "ID": "ID",
+      "__Schema": "__Schema",
+      "__Type": "__Type",
+      "__TypeKind": "__TypeKind",
+      "Boolean": "Boolean",
+      "__Field": "__Field",
+      "__InputValue": "__InputValue",
+      "__EnumValue": "__EnumValue",
+      "__Directive": "__Directive",
+      "__DirectiveLocation": "__DirectiveLocation"
+    },
+    "_implementations": {}
+  },
+  "fragments": {},
+  "operation": {
+    "kind": "OperationDefinition",
+    "operation": "query",
+    "name": null,
+    "variableDefinitions": null,
+    "directives": [],
+    "selectionSet": {
+      "kind": "SelectionSet",
+      "selections": [
+        {
+          "kind": "Field",
+          "alias": null,
+          "name": {
+            "kind": "Name",
+            "value": "user",
+            "loc": {
+              "start": 4,
+              "end": 8
+            }
+          },
+          "arguments": [
+            {
+              "kind": "Argument",
+              "name": {
+                "kind": "Name",
+                "value": "_id",
+                "loc": {
+                  "start": 9,
+                  "end": 12
+                }
+              },
+              "value": {
+                "kind": "StringValue",
+                "value": "583f1607bf98f7f846e7d2d1",
+                "loc": {
+                  "start": 14,
+                  "end": 40
+                }
+              },
+              "loc": {
+                "start": 9,
+                "end": 40
+              }
+            }
+          ],
+          "directives": [],
+          "selectionSet": {
+            "kind": "SelectionSet",
+            "selections": [
+              {
+                "kind": "Field",
+                "alias": null,
+                "name": {
+                  "kind": "Name",
+                  "value": "_id",
+                  "loc": {
+                    "start": 48,
+                    "end": 51
+                  }
+                },
+                "arguments": [],
+                "directives": [],
+                "selectionSet": null,
+                "loc": {
+                  "start": 48,
+                  "end": 51
+                }
+              },
+              {
+                "kind": "Field",
+                "alias": null,
+                "name": {
+                  "kind": "Name",
+                  "value": "email",
+                  "loc": {
+                    "start": 56,
+                    "end": 61
+                  }
+                },
+                "arguments": [],
+                "directives": [],
+                "selectionSet": null,
+                "loc": {
+                  "start": 56,
+                  "end": 61
+                }
+              },
+              {
+                "kind": "Field",
+                "alias": null,
+                "name": {
+                  "kind": "Name",
+                  "value": "firstname",
+                  "loc": {
+                    "start": 66,
+                    "end": 75
+                  }
+                },
+                "arguments": [],
+                "directives": [],
+                "selectionSet": null,
+                "loc": {
+                  "start": 66,
+                  "end": 75
+                }
+              },
+              {
+                "kind": "Field",
+                "alias": null,
+                "name": {
+                  "kind": "Name",
+                  "value": "lastname",
+                  "loc": {
+                    "start": 80,
+                    "end": 88
+                  }
+                },
+                "arguments": [],
+                "directives": [],
+                "selectionSet": null,
+                "loc": {
+                  "start": 80,
+                  "end": 88
+                }
+              }
+            ],
+            "loc": {
+              "start": 42,
+              "end": 92
+            }
+          },
+          "loc": {
+            "start": 4,
+            "end": 92
+          }
+        }
+      ],
+      "loc": {
+        "start": 0,
+        "end": 94
+      }
+    },
+    "loc": {
+      "start": 0,
+      "end": 94
+    }
+  },
+  "variableValues": {}
+}

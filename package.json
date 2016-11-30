@@ -2,33 +2,40 @@
   "name": "graphql-mongodb-projection",
   "description": "Uses GraphQL resolve info to generate mongoDB projections",
   "homepage": "https://github.com/du5rte/graphql-mongodb-projection#readme",
-  "version": "1.0.5",
-  "main": "./dist/index.js",
+  "version": "1.0.7",
+  "main": "./lib/index.js",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp compile",
-    "test": "gulp test"
+    "build": "babel src --out-dir lib",
+    "clean": "rm -rf lib test/db && mkdir lib test/db",
+    "db:start": "mongod --dbpath ./test/db/",
+    "db:import": "mongoimport --db test --collection users --jsonArray test/usersDB.json",
+    "dev:build": "npm run build -- --watch & npm run test -- --watch",
+    "dev:server": "nodemon --exec babel-node ./test/server",
+    "prepublish": "npm run clean && npm run build",
+    "test": "NODE_ENV=production mocha --compilers js:babel-core/register"
   },
   "author": "Duarte Monteiro <du5rtemonteiro@gmail.com> (http://du5rte.com/)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/du5rte/graphql-mongodb-projection.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/du5rte/graphql-mongodb-projection/issues"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.7.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-entries": "^1.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-plugin-transform-runtime": "^6.6.0",
-    "babel-preset-es2015": "^6.6.0",
     "babel-preset-es2015-node5": "^1.2.0",
     "babel-preset-stage-0": "^6.5.0",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-load-plugins": "*",
-    "gulp-mocha": "^2.2.0",
-    "mocha": "^2.4.5"
+    "graphql": "^0.8.2",
+    "mocha": "^3.2.0"
+  },
+  "peerDependencies": {
+    "graphql": ">0.8.0"
   }
 }
