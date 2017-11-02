@@ -9,12 +9,21 @@
     "_id": "583f1607bf98f7f846e7d2d2",
     "email":"bradpitt@mail.com",
     "firstname":"Brad",
-    "lastname":"Pitt"
+    "lastname":"Pitt",
+    "friends": [
+      "583f1607bf98f7f846e7d2d1",
+      "583f1607bf98f7f846e7d2d3",
+      "583f1607bf98f7f846e7d2d4"
+    ]
   },
   {
     "_id": "583f1607bf98f7f846e7d2d3",
     "email":"christianbale@mail.com",
     "firstname":"Christian",
     "lastname":"Bale"
+  },
+  {
+    "_id": "583f1607bf98f7f846e7d2d4",
+    "email":"johndoe@mail.com"
   }
 ]

@@ -41,4 +41,56 @@ describe('Projection Tests', function() {
         assert.ok(!user.lastname)
       })
   })
+
+  it('All Fields with Union Type', function() {
+    let query = `
+      {
+        people {
+          ... on UnnamedUser {
+            _id
+            email
+          }
+
+          ... on User {
+            _id
+            email
+            firstname
+          }
+        }
+      }
+    `
+    return graphql(schema, query).then(result => {
+        let people = result.data.people
+        assert.notEqual(people, null)
+        assert.equal(people.length, 4)
+      })
+  })
+
+  it('Nested Fields with Union Type', function() {
+    let query = `
+    {
+      user(_id: "583f1607bf98f7f846e7d2d2") {
+        _id
+        email
+        firstname
+        lastname
+        friends {
+          ... on UnnamedUser {
+            _id
+            email
+          }
+
+          ... on User {
+            _id
+            firstname
+          }
+        }
+      }
+    }
+    `
+    return graphql(schema, query).then(result => {
+        let user = result.data.user
+        assert.equal(typeof result.errors, 'undefined')
+      })
+  })
 })
