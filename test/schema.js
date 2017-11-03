@@ -6,6 +6,7 @@ import {
   GraphQLList,
   GraphQLEnumType,
   GraphQLNonNull,
+  GraphQLUnionType,
 } from 'graphql'
 
 import db from './MongoDBMockup'
@@ -19,8 +20,29 @@ const UserType = new GraphQLObjectType({
     _id: {type: new GraphQLNonNull(GraphQLID)},
     email: {type: new GraphQLNonNull(GraphQLString)},
     firstname: {type: new GraphQLNonNull(GraphQLString)},
-    lastname: {type: new GraphQLNonNull(GraphQLString)}
+    lastname: {type: new GraphQLNonNull(GraphQLString)},
+    friends: {type: new GraphQLList(PersonType)}
   })
+})
+
+const UnnamedUserType = new GraphQLObjectType({
+  name: 'UnnamedUser',
+  fields: {
+    _id: {type: new GraphQLNonNull(GraphQLID)},
+    email: {type: new GraphQLNonNull(GraphQLString)}
+  }
+})
+
+const PersonType = new GraphQLUnionType({
+  name: 'Person',
+  types: [ UserType, UnnamedUserType ],
+  resolveType(value) {
+    if (value.firstname) {
+      return UserType;
+    }
+
+    return UnnamedUserType;
+  }
 })
 
 const user = {
@@ -34,11 +56,21 @@ const user = {
   }
 }
 
+const people = {
+  type: new GraphQLList(PersonType),
+  description: 'Get people',
+  args: {},
+  resolve(root, args, ctx, info) {
+    return db.find({}, infoToProjection(info))
+  }
+}
+
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Queries',
     fields: () => ({
-      user
+      user,
+      people
     })
   })
 })

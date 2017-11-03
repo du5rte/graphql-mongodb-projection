@@ -11,7 +11,7 @@ export default function infoToProjection(info, context = (info.fieldASTs || info
           selection.selectionSet.selections
         ) {
           nodeSelection = selection.selectionSet.selections.find(
-            sel => sel.name.value === 'node'
+            sel => sel.name && sel.name.value && sel.name.value === 'node'
           )
         }
 
