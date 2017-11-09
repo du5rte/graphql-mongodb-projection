@@ -2,7 +2,7 @@
   "name": "graphql-mongodb-projection",
   "description": "Uses GraphQL resolve info to generate mongoDB projections",
   "homepage": "https://github.com/du5rte/graphql-mongodb-projection#readme",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
