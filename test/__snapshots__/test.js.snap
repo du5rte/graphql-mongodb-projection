@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Projection Tests All Fields 1`] = `
+Object {
+  "data": Object {
+    "user": Object {
+      "_id": "583f1607bf98f7f846e7d2d1",
+      "email": "leonardodicaprio@mail.com",
+      "firstname": "Leonardo",
+      "lastname": "Di Caprio",
+    },
+  },
+}
+`;
+
+exports[`Projection Tests All Fields with Union Type 1`] = `
+Object {
+  "data": Object {
+    "people": Array [
+      Object {
+        "_id": "583f1607bf98f7f846e7d2d1",
+        "email": "leonardodicaprio@mail.com",
+        "firstname": "Leonardo",
+      },
+      Object {
+        "_id": "583f1607bf98f7f846e7d2d2",
+        "email": "bradpitt@mail.com",
+        "firstname": "Brad",
+      },
+      Object {
+        "_id": "583f1607bf98f7f846e7d2d3",
+        "email": "christianbale@mail.com",
+        "firstname": "Christian",
+      },
+      Object {
+        "_id": "583f1607bf98f7f846e7d2d4",
+        "email": "johndoe@mail.com",
+      },
+    ],
+  },
+}
+`;
+
+exports[`Projection Tests Conditional fields 1`] = `
+Object {
+  "data": Object {
+    "user": Object {
+      "avatar": null,
+    },
+  },
+}
+`;
+
+exports[`Projection Tests Nested Fields with Union Type 1`] = `
+Object {
+  "data": Object {
+    "user": Object {
+      "_id": "583f1607bf98f7f846e7d2d2",
+      "email": "bradpitt@mail.com",
+      "firstname": "Brad",
+      "friends": Array [
+        Object {
+          "_id": "583f1607bf98f7f846e7d2d1",
+          "firstname": "Leonardo",
+        },
+        Object {
+          "_id": "583f1607bf98f7f846e7d2d3",
+          "firstname": "Christian",
+        },
+        Object {
+          "_id": "583f1607bf98f7f846e7d2d4",
+          "email": "johndoe@mail.com",
+        },
+      ],
+      "lastname": "Pitt",
+    },
+  },
+}
+`;
+
+exports[`Projection Tests Only selected fields 1`] = `
+Object {
+  "data": Object {
+    "user": Object {
+      "email": "leonardodicaprio@mail.com",
+    },
+  },
+}
+`;

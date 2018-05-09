@@ -26,7 +26,7 @@ $ npm install --save-dev graphql-mongodb-projection
 Just add it has a second parameter in a `.findOne` inside the `resolve` function, make sure to pass it `info`. (example using `koa` with `express` is the 3rd parameter).
 
 ```js
-import infoToProjection from 'graphql-mongodb-projection'
+import graphqlMongodbProjection from 'graphql-mongodb-projection'
 
 const user = {
   type: UserType,
@@ -35,9 +35,23 @@ const user = {
     _id: {type: new GraphQLNonNull(GraphQLString)},
   },
   resolve(root, args, ctx, info) {
-    return db.collection('users').findOne({_id: ObjectId(args._id)}, infoToProjection(info))
+    return db.collection('users').findOne({_id: ObjectId(args._id)}, graphqlMongodbProjection(info))
   }
 }
+```
+
+## Conditional fields
+
+```js
+resolve(root, args, ctx, info) {
+  const projection = graphqlMongodbProjection(info, {
+    // if asked for `avatar` will project `profile.avatar`
+    'avatar': 'profile.avatar',
+    // always return `verified`
+    'verified': true
+  })
+}
+
 ```
 
 
@@ -150,3 +164,6 @@ Result
   }
 }
 ```
+
+## TODO
+- create a temporary mongoDB service

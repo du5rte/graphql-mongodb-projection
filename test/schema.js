@@ -11,7 +11,7 @@ import {
 
 import db from './MongoDBMockup'
 
-import infoToProjection from '../src'
+import graphqlMongodbProjection from '../src'
 
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -21,7 +21,8 @@ const UserType = new GraphQLObjectType({
     email: {type: new GraphQLNonNull(GraphQLString)},
     firstname: {type: new GraphQLNonNull(GraphQLString)},
     lastname: {type: new GraphQLNonNull(GraphQLString)},
-    friends: {type: new GraphQLList(PersonType)}
+    friends: {type: new GraphQLList(PersonType)},
+    avatar: {type: GraphQLString}
   })
 })
 
@@ -52,7 +53,13 @@ const user = {
     _id: {type: new GraphQLNonNull(GraphQLString)},
   },
   resolve(root, { _id }, ctx, info) {
-    return db.findOne({ _id }, infoToProjection(info))
+    const projection = graphqlMongodbProjection(info, {
+      'avatar': 'profile.avatar'
+    })
+
+    console.log(projection)
+
+    return db.findOne({ _id }, projection)
   }
 }
 
@@ -61,7 +68,11 @@ const people = {
   description: 'Get people',
   args: {},
   resolve(root, args, ctx, info) {
-    return db.find({}, infoToProjection(info))
+    const projection = graphqlMongodbProjection(info)
+
+    console.log(projection)
+
+    return db.find({}, projection)
   }
 }
 

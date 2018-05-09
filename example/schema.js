@@ -10,7 +10,7 @@ import {
 
 import { db, ObjectId } from 'mongodb'
 
-import infoToProjection from '../src'
+import graphqlMongodbProjection from '../src'
 
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -31,7 +31,7 @@ const user = {
   },
   resolve(root, { _id }, ctx, info) {
     // HERE ->
-    return db.collection('users').findOne({_id: ObjectId(_id)}, infoToProjection(info))
+    return db.collection('users').findOne({_id: ObjectId(_id)}, graphqlMongodbProjection(info))
   }
 }
 

@@ -3,10 +3,8 @@ import assert from 'assert'
 import { graphql } from 'graphql';
 import schema from './schema'
 
-import infoToProjection from '../src'
-
 describe('Projection Tests', function() {
-  it('All Fields', function() {
+  it('All Fields', async function() {
     let query = `
       {
         user(_id: "583f1607bf98f7f846e7d2d1") {
@@ -18,15 +16,11 @@ describe('Projection Tests', function() {
       }
     `
     return graphql(schema, query).then(result => {
-        let user = result.data.user
-        assert.ok(user._id)
-        assert.ok(user.email)
-        assert.ok(user.firstname)
-        assert.ok(user.lastname)
+        expect(result).toMatchSnapshot()
       })
   })
 
-  it('Only selected fields', function() {
+  it('Only selected fields', async function() {
     let query = `
       {
         user(_id: "583f1607bf98f7f846e7d2d1") {
@@ -35,14 +29,11 @@ describe('Projection Tests', function() {
       }
     `
     return graphql(schema, query).then(result => {
-        let user = result.data.user
-        assert.ok(!user._id)
-        assert.ok(!user.firstname)
-        assert.ok(!user.lastname)
+        expect(result).toMatchSnapshot()
       })
   })
 
-  it('All Fields with Union Type', function() {
+  it('All Fields with Union Type', async function() {
     let query = `
       {
         people {
@@ -60,13 +51,11 @@ describe('Projection Tests', function() {
       }
     `
     return graphql(schema, query).then(result => {
-        let people = result.data.people
-        assert.notEqual(people, null)
-        assert.equal(people.length, 4)
+        expect(result).toMatchSnapshot()
       })
   })
 
-  it('Nested Fields with Union Type', function() {
+  it('Nested Fields with Union Type', async function() {
     let query = `
     {
       user(_id: "583f1607bf98f7f846e7d2d2") {
@@ -88,9 +77,23 @@ describe('Projection Tests', function() {
       }
     }
     `
+
     return graphql(schema, query).then(result => {
-        let user = result.data.user
-        assert.equal(typeof result.errors, 'undefined')
-      })
+      expect(result).toMatchSnapshot()
+    })
+  })
+
+  it('Conditional fields', async function() {
+    let query = `
+    {
+      user(_id: "583f1607bf98f7f846e7d2d2") {
+        avatar
+      }
+    }
+    `
+
+    return graphql(schema, query).then(result => {
+      expect(result).toMatchSnapshot()
+    })
   })
 })

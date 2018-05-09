@@ -2,17 +2,17 @@
   "name": "graphql-mongodb-projection",
   "description": "Uses GraphQL resolve info to generate mongoDB projections",
   "homepage": "https://github.com/du5rte/graphql-mongodb-projection#readme",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "clean": "rm -rf lib test/db && mkdir lib test/db",
     "db:start": "mongod --dbpath ./test/db/",
     "db:import": "mongoimport --db test --collection users --jsonArray test/usersDB.json",
-    "dev:build": "npm run build -- --watch & npm run test -- --watch",
+    "dev:build": "npm run build -- --watch",
     "dev:server": "nodemon --exec babel-node ./test/server",
     "prepublish": "npm run clean && npm run build",
-    "test": "NODE_ENV=production mocha --compilers js:babel-core/register"
+    "test": "jest"
   },
   "author": "Duarte Monteiro <du5rtemonteiro@gmail.com> (http://du5rte.com/)",
   "repository": {
@@ -30,12 +30,16 @@
     "babel-plugin-transform-object-entries": "^1.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015-node5": "^1.2.0",
     "babel-preset-stage-0": "^6.5.0",
     "graphql": "^0.8.2",
+    "jest": "^22.4.3",
+    "lodash.get": "^4.4.2",
     "mocha": "^3.2.0"
   },
   "peerDependencies": {
     "graphql": ">0.8.0"
-  }
+  },
+  "dependencies": {}
 }
