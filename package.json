@@ -34,9 +34,7 @@
     "babel-preset-es2015-node5": "^1.2.0",
     "babel-preset-stage-0": "^6.5.0",
     "graphql": "^0.8.2",
-    "jest": "^22.4.3",
-    "lodash.get": "^4.4.2",
-    "mocha": "^3.2.0"
+    "jest": "^22.4.3"
   },
   "peerDependencies": {
     "graphql": ">0.8.0"
