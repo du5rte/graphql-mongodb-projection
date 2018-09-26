@@ -39,5 +39,7 @@
   "peerDependencies": {
     "graphql": ">0.8.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
+  }
 }
