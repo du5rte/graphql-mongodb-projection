@@ -84,6 +84,7 @@ const user = {
       avatar: 'profile.avatar',
       'friends._id': 'friends'
     })
+
     console.log(projection)
 
     return UserModel.findById(_id, projection)

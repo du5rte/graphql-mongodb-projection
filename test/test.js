@@ -131,4 +131,26 @@ describe('Projection Tests', function() {
       expect(result).toMatchSnapshot()
     })
   })
+
+  it('Nested fields', async function() {
+    let query = `
+    {
+      user(_id: "583f1607bf98f7f846e7d2d5") {
+        _id
+        nested {
+          level
+          deep {
+            deepLevel
+            otherField
+          }
+        }
+      }
+    }`
+
+    return graphql(schema, query).then(result => {
+      expect(result).toMatchSnapshot()
+    })
+  })
 })
+
+export { connection, db }

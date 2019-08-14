@@ -1,12 +1,16 @@
+import createNestedProjections from './createNestedProjection'
+
 const isBoolean = val => typeof val === 'boolean'
 const isString = val => typeof val === 'string'
 
-export function infoToProjection(info, context = (info.fieldASTs || info.fieldNodes)[0]) {
+export function infoToProjection(
+  info,
+  context = (info.fieldASTs || info.fieldNodes)[0]
+) {
   return context.selectionSet.selections.reduce((projection, selection) => {
     switch (selection.kind) {
       case 'Field':
-
-        let nodeSelection = undefined;
+        let nodeSelection = undefined
 
         if (
           selection &&
@@ -27,6 +31,19 @@ export function infoToProjection(info, context = (info.fieldASTs || info.fieldNo
             ...infoToProjection(info, nodeSelection)
           }
         } else {
+          // Handle nested fields by checking if the current selection has a selectionSet
+          // and if so pass it to the recursive createNestedProjections.
+          if (
+            selection.selectionSet &&
+            selection.selectionSet.selections.length > 0
+          ) {
+            const nestedProjections = createNestedProjections(selection)
+            return {
+              ...projection,
+              ...nestedProjections
+            }
+          }
+
           return {
             ...projection,
             [selection.name.value]: true
@@ -73,9 +90,7 @@ export function conditionsToProjection(_projection, conditions) {
         ...rest,
         [value]: true
       }
-    }
-
-    else {
+    } else {
       return projection
     }
   }, _projection)
@@ -85,7 +100,10 @@ export function graphqlMongodbProjection(info, conditions) {
   const infoProjection = infoToProjection(info)
 
   if (conditions) {
-    const conditionaProjection = conditionsToProjection(infoProjection, conditions)
+    const conditionaProjection = conditionsToProjection(
+      infoProjection,
+      conditions
+    )
 
     return conditionaProjection
   }
