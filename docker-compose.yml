@@ -1,0 +1,31 @@
+version: '2.4'
+
+services:
+  db:
+    image: mongo:4.0.10-xenial
+    restart: 'always'
+    command: --wiredTigerCacheSizeGB 1 --directoryperdb
+    volumes:
+      - dbData:/data/db
+    environment:
+      NODE_ENV: development
+    ports:
+      - '27017:27017'
+    networks:
+      - mongo
+  dbSetup:
+    image: mongo:4.0.10-xenial
+    restart: 'no'
+    entrypoint: bash /home/setupData.sh
+    depends_on:
+      - db
+    volumes:
+      - ./setupData.sh:/home/setupData.sh
+      - ./test/users.json:/home/users.json
+    networks:
+      - mongo
+
+volumes:
+  dbData:
+networks:
+  mongo:

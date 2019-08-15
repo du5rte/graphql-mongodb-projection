@@ -9,6 +9,7 @@ Uses GraphQL resolve's info to generate mongoDB projections
 
 Supports:
 - Fields
+- Nested Fields
 - InlineFragments
 - FragmentSpreads
 - Relay Edge Node Pattern
@@ -54,8 +55,50 @@ resolve(root, args, ctx, info) {
 
 ```
 
+## Referenced Documents
 
-on `GraphiQL`
+When querying on a field that stores an array of some value (usually `_id`) in the database, but will **resolve** to another document with the GraphQL resolver like the example below.
+
+```
+// friends is the field referred to above.
+const user = {
+    _id: '583f1607bf98f7f846e7d2d2',
+    email: 'bradpitt@mail.com',
+    firstname: 'Brad',
+    lastname: 'Pitt',
+    friends: [
+      '583f1607bf98f7f846e7d2d1',
+      '583f1607bf98f7f846e7d2d3',
+      '583f1607bf98f7f846e7d2d4'
+    ],
+  }
+```
+
+Then you will need to include in the Conditional Fields object the nested values of the document **to be** resolved as the key and parent queried field as the value as shown below.
+
+```js
+// a friend document has the same fields as user, therefore,
+// user resolve function for GraphQL
+async function resolve(root, { _id }, ctx, info) {
+  const projection = graphqlMongodbProjection(info, {
+    avatar: 'profile.avatar',
+    'friends._id': 'friends'
+    'friends.firstname': 'friends'
+    'friends.lastname': 'friends'
+    ...
+  })
+
+  console.log(projection)
+
+  return UserModel.findById(_id, projection)
+}
+
+```
+
+The reason for this is that `friend.firstname`, etc. do not match any fields with the MongoDB projection object during the query.
+
+
+## On `GraphiQL`
 ```
 fragment userInfo on User {
   email
