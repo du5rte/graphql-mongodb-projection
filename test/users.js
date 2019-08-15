@@ -1,11 +1,6 @@
-import mongoose from 'mongoose'
+import fs from 'fs'
 
-const id1 = mongoose.Types.ObjectId()
-const id2 = mongoose.Types.ObjectId()
-const id3 = mongoose.Types.ObjectId()
-const id4 = mongoose.Types.ObjectId()
-const id5 = mongoose.Types.ObjectId()
-export default [
+const users = [
   {
     _id: '583f1607bf98f7f846e7d2d1',
     email: 'leonardodicaprio@mail.com',
@@ -72,3 +67,15 @@ export default [
     }
   }
 ]
+
+fs.writeFile(
+  './test/users.json',
+  JSON.stringify(users, null, 2),
+  (err, result) => {
+    if (err) {
+      console.log('Error writing file', err)
+    }
+  }
+)
+
+export default users

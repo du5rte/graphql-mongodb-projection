@@ -7,13 +7,13 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "clean": "rm -rf lib test/db && mkdir lib test/db",
-    "db:start": "mongod --dbpath ./test/db/",
-    "db:docker": "docker container run --rm -d -p 27017:27017 mongo:4.0.10-xenial",
-    "db:import": "mongoimport --db test --collection users --drop --jsonArray test/users.json",
+    "db:start": "docker-compose up -d",
+    "db:stop": "docker-compose down -v",
     "dev:build": "npm run build -- --watch",
     "dev:server": "nodemon --exec babel-node ./example/server",
     "prepublish": "npm run clean && npm run build",
-    "test": "jest --config=./jest.config.js"
+    "test": "jest --config=./jest.config.js",
+    "genUsers": "babel-node ./test/users.js"
   },
   "author": "Duarte Monteiro <du5rtemonteiro@gmail.com> (http://du5rte.com/)",
   "repository": {
