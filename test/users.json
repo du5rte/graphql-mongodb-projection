@@ -1,17 +1,17 @@
 [
   {
     "_id": "583f1607bf98f7f846e7d2d1",
-    "email":"leonardodicaprio@mail.com",
-    "firstname":"Leonardo",
-    "lastname":"Di Caprio",
+    "email": "leonardodicaprio@mail.com",
+    "firstname": "Leonardo",
+    "lastname": "Di Caprio",
     "verified": true
   },
   {
     "_id": "583f1607bf98f7f846e7d2d2",
-    "email":"bradpitt@mail.com",
-    "firstname":"Brad",
-    "lastname":"Pitt",
-    "profile" : {
+    "email": "bradpitt@mail.com",
+    "firstname": "Brad",
+    "lastname": "Pitt",
+    "profile": {
       "avatar": "cat.jpg",
       "achievements": [
         {
@@ -41,14 +41,27 @@
   },
   {
     "_id": "583f1607bf98f7f846e7d2d3",
-    "email":"christianbale@mail.com",
-    "firstname":"Christian",
-    "lastname":"Bale",
+    "email": "christianbale@mail.com",
+    "firstname": "Christian",
+    "lastname": "Bale",
     "verified": false
   },
   {
     "_id": "583f1607bf98f7f846e7d2d4",
-    "email":"johndoe@mail.com",
+    "email": "johndoe@mail.com",
     "verified": true
+  },
+  {
+    "_id": "583f1607bf98f7f846e7d2d5",
+    "email": "aprilSmith@mail.com",
+    "verified": true,
+    "nested": {
+      "level": 2,
+      "otherField": "one",
+      "deep": {
+        "deepLevel": 3,
+        "otherField": "two"
+      }
+    }
   }
 ]

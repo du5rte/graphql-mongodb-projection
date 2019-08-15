@@ -2,17 +2,18 @@
   "name": "graphql-mongodb-projection",
   "description": "Uses GraphQL resolve info to generate mongoDB projections",
   "homepage": "https://github.com/du5rte/graphql-mongodb-projection#readme",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "clean": "rm -rf lib test/db && mkdir lib test/db",
     "db:start": "mongod --dbpath ./test/db/",
-    "db:import": "mongoimport --db test --collection users --jsonArray test/usersDB.json",
+    "db:docker": "docker container run --rm -d -p 27017:27017 mongo:4.0.10-xenial",
+    "db:import": "mongoimport --db test --collection users --drop --jsonArray test/users.json",
     "dev:build": "npm run build -- --watch",
-    "dev:server": "nodemon --exec babel-node ./test/server",
+    "dev:server": "nodemon --exec babel-node ./example/server",
     "prepublish": "npm run clean && npm run build",
-    "test": "jest"
+    "test": "jest --config=./jest.config.js"
   },
   "author": "Duarte Monteiro <du5rtemonteiro@gmail.com> (http://du5rte.com/)",
   "repository": {
@@ -24,22 +25,26 @@
     "url": "https://github.com/du5rte/graphql-mongodb-projection/issues"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.7.2",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-transform-object-entries": "^1.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.19.0",
-    "babel-plugin-transform-runtime": "^6.6.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015-node5": "^1.2.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "graphql": "^0.8.2",
-    "jest": "^22.4.3"
+    "@babel/cli": "7.5.5",
+    "@babel/core": "7.5.5",
+    "@babel/node": "7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "7.5.5",
+    "@babel/plugin-transform-runtime": "7.5.5",
+    "@babel/preset-env": "7.5.5",
+    "@babel/runtime": "7.5.5",
+    "@shelf/jest-mongodb": "1.1.0",
+    "graphql": "14.4.2",
+    "jest": "24.8.0",
+    "mongodb": "3.3.0",
+    "mongodb-memory-server": "5.1.5",
+    "nodemon": "1.19.1"
   },
   "peerDependencies": {
     "graphql": ">0.8.0"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "core-js": "3.2.1",
+    "mongoose": "5.6.9"
   }
 }

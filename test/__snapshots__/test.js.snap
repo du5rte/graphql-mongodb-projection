@@ -36,6 +36,10 @@ Object {
         "_id": "583f1607bf98f7f846e7d2d4",
         "email": "johndoe@mail.com",
       },
+      Object {
+        "_id": "583f1607bf98f7f846e7d2d5",
+        "email": "aprilSmith@mail.com",
+      },
     ],
   },
 }
@@ -73,6 +77,23 @@ Object {
         },
       ],
       "lastname": "Pitt",
+    },
+  },
+}
+`;
+
+exports[`Projection Tests Nested fields 1`] = `
+Object {
+  "data": Object {
+    "user": Object {
+      "_id": "583f1607bf98f7f846e7d2d5",
+      "nested": Object {
+        "deep": Object {
+          "deepLevel": "3",
+          "otherField": "two",
+        },
+        "level": "2",
+      },
     },
   },
 }
